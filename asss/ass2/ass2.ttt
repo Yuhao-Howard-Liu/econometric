@@ -1,0 +1,13 @@
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ccccccc}
+\hline\hline
+& Tracking & Age & Gender & Assigned & Percentile & Intercept \\ \cline{2-7}
+Clustering based & $0.08036$ & $0.00262$ & $0.02907$ & $0.03998$ & $0.00003$
+& $0.09887$ \\
+Conventional robust,$\hat{V}_{\hat{\beta}}^{HC3}$ & $0.02441$ & $0.00211$ & $%
+0.02467$ & $0.02441$ & $0.00001$ & $0.03639$ \\ \hline\hline
+\end{tabular}
+\caption{Standard Errors}
+\end{center}
+\end{table}

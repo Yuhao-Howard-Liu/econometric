@@ -1,0 +1,510 @@
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage[nomarkers,notablist,nofiglist]{endfloat}
+\usepackage{multirow, array}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Monday, August 02, 2021 19:26:08}
+%TCIDATA{LastRevised=Sunday, August 08, 2021 11:56:13}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+\begin{document}
+
+\title{ \textsc{COMM8102 Econometric Analysis} \\
+\textsc{Assignment 4}}
+\author{\textsc{Yuhao Liu} \\
+%EndAName
+{\small z5097536}}
+\date{{\small \today}}
+\maketitle
+
+\section*{Q1 Exercise 12.9}
+
+\subsection*{(a)}
+
+To see if $\hat{\beta}_{\text{IV}}$ is unbiased, check whether the
+expectation of $\hat{\beta}_{\text{IV}}$ is equal to $\beta $.
+
+\begin{eqnarray*}
+E\left[ \hat{\beta}_{\text{IV}}\right] &=&E\left[ \left( \frac{1}{n}%
+\sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right) ^{-1}\left( \frac{1}{n}%
+\sum_{i=1}^{n}Z_{i}Y_{i}\right) \right] \\
+&=&E\left[ \left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right) ^{-1}\left(
+\sum_{i=1}^{n}Z_{i}\left( X_{i}^{\prime }\beta +e_{i}\right) \right) \right]
+\\
+&=&E\left[ \left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right)
+^{-1}\sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\beta +\left(
+\sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right) ^{-1}\sum_{i=1}^{n}Z_{i}e_{i}%
+\right] \\
+&=&E\left[ I\beta +\left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right)
+^{-1}\sum_{i=1}^{n}Z_{i}e_{i}\right] \\
+&=&\beta +E\left[ E\left[ \left. \left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime
+}\right) ^{-1}\sum_{i=1}^{n}Z_{i}e_{i}\right\vert Z,X\right] \right] ~\text{%
+by iterated conditional expectation } \\
+&=&\beta +E\left[ \left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right)
+^{-1}\sum_{i=1}^{n}Z_{i}\underset{0}{\underbrace{E\left[ \left.
+e_{i}\right\vert Z,X\right] }}\right] ~\text{since they are random sample
+(i.i.d.)} \\
+&=&\beta
+\end{eqnarray*}
+
+Therefore, the IV estimator is unbiased.
+
+\subsection*{(b)}
+
+\begin{eqnarray*}
+Var\left[ \left. \hat{\beta}_{\text{IV}}\right\vert X,Z\right] &=&Var\left[
+\left. \hat{\beta}_{\text{IV}}\right\vert X,Z\right] \\
+&=&Var\left[ \left. \hat{\beta}_{\text{IV}}-\beta \right\vert X,Z\right] \\
+&=&Var\left[ \left. \left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right)
+^{-1}\sum_{i=1}^{n}Z_{i}e_{i}\right\vert X,Z\right] \\
+&=&\left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right) ^{-1}Var\left[ \left.
+\sum_{i=1}^{n}Z_{i}e_{i}\right\vert X,Z\right] \left(
+\sum_{i=1}^{n}X_{i}Z_{i}^{\prime }\right) ^{-1} \\
+&=&\left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right)
+^{-1}\sum_{i=1}^{n}Z_{i}Z_{i}^{\prime }Var\left[ \left. e_{i}\right\vert X,Z%
+\right] \left( \sum_{i=1}^{n}X_{i}Z_{i}^{\prime }\right) ^{-1} \\
+&=&\left( \sum_{i=1}^{n}Z_{i}X_{i}^{\prime }\right)
+^{-1}\sum_{i=1}^{n}Z_{i}Z_{i}^{\prime }E\left[ \left. e_{i}^{2}\right\vert
+X,Z\right] \left( \sum_{i=1}^{n}X_{i}Z_{i}^{\prime }\right) ^{-1}
+\end{eqnarray*}
+
+\section*{Q2 Exercise 12.12}
+
+\subsection*{(a)}
+
+It is easy to see that $\hat{\gamma}=\frac{\sum_{i=1}^{n}Z_{i}X_{i}}{%
+\sum_{i=1}^{n}Z_{i}^{2}}$. Then $\hat{X}_{i}^{2}=\left( \frac{%
+\sum_{i=1}^{n}Z_{i}X_{i}}{\sum_{i=1}^{n}Z_{i}^{2}}\right) ^{2}\cdot
+Z_{i}^{2} $. By regressing $Y$ on $\hat{X}^{2}$, we have
+
+\begin{eqnarray*}
+\hat{\beta} &=&\frac{\sum_{j=1}^{n}\hat{X}_{j}^{2}Y_{j}}{\sum_{j=1}^{n}%
+\left( \hat{X}_{j}^{2}\right) ^{2}} \\
+&=&\frac{\sum_{j=1}^{n}\left( \frac{\sum_{i=1}^{n}Z_{i}X_{i}}{%
+\sum_{i=1}^{n}Z_{i}^{2}}\right) ^{2}Z_{j}^{2}Y_{j}}{\sum_{j=1}^{n}\left( 
+\frac{\sum_{i=1}^{n}Z_{i}X_{i}}{\sum_{i=1}^{n}Z_{i}^{2}}\right) ^{4}Z_{j}^{4}%
+} \\
+&=&\left( \frac{\sum_{i=1}^{n}Z_{i}^{2}}{\sum_{i=1}^{n}Z_{i}X_{i}}\right)
+^{2}\frac{\sum_{j=1}^{n}Z_{j}^{2}Y_{j}}{\sum_{j=1}^{n}Z_{j}^{4}}
+\end{eqnarray*}
+
+\subsection*{(b)}
+
+The estimator can be written as
+
+\begin{equation*}
+\hat{\beta}=\left( \frac{\frac{1}{n}\sum_{i=1}^{n}Z_{i}^{2}}{\frac{1}{n}%
+\sum_{i=1}^{n}Z_{i}X_{i}}\right) ^{2}\frac{\frac{1}{n}%
+\sum_{j=1}^{n}Z_{j}^{2}Y_{j}}{\frac{1}{n}\sum_{j=1}^{n}Z_{j}^{4}}.
+\end{equation*}
+
+By WLLN and CMT,
+
+\begin{equation*}
+\hat{\beta}\overset{p}{\longrightarrow }\left( \frac{E\left[ Z^{2}\right] }{E%
+\left[ ZX\right] }\right) ^{2}\cdot \frac{E\left[ Z^{2}Y\right] }{E\left[
+Z^{4}\right] }.
+\end{equation*}
+
+\subsection*{(c)}
+
+Continue from part b, $\hat{\beta}$ converges in probability to
+
+\begin{eqnarray*}
+\left( \frac{E\left[ Z^{2}\right] }{E\left[ ZX\right] }\right) ^{2}\cdot 
+\frac{E\left[ Z^{2}Y\right] }{E\left[ Z^{4}\right] } &=&\left( \frac{E\left[
+Z^{2}\right] }{E\left[ ZX\right] }\right) ^{2}\cdot \frac{E\left[
+Z^{2}\left( \beta X^{2}+e\right) \right] }{E\left[ Z^{4}\right] } \\
+&=&\left( \frac{E\left[ Z^{2}\right] }{E\left[ Z\left( \gamma Z+u\right) %
+\right] }\right) ^{2}\cdot \frac{E\left[ Z^{2}\left( \beta \left( \gamma
+Z+u\right) ^{2}+e\right) \right] }{E\left[ Z^{4}\right] } \\
+&=&\left( \frac{E\left[ Z^{2}\right] }{\gamma E\left[ Z^{2}\right] +\underset%
+{0}{\underbrace{E\left[ uZ\right] }}}\right) ^{2}\cdot \frac{E\left[ \beta
+\gamma ^{2}Z^{4}+2\beta \gamma Z^{3}u+\beta u^{2}Z^{2}+eZ^{2}\right] }{E%
+\left[ Z^{4}\right] } \\
+&=&\frac{1}{\gamma ^{2}}\cdot \frac{\beta \gamma ^{2}E\left[ Z^{4}\right]
++2\beta \gamma E\left[ Z^{3}u\right] +\beta E\left[ u^{2}Z^{2}\right] +E%
+\left[ eZ^{2}\right] }{E\left[ Z^{4}\right] } \\
+&=&\beta +\frac{2\beta E\left[ Z^{3}u\right] }{\gamma E\left[ Z^{4}\right] }+%
+\frac{\beta E\left[ u^{2}Z^{2}\right] +E\left[ eZ^{2}\right] }{\gamma ^{2}E%
+\left[ Z^{4}\right] }
+\end{eqnarray*}
+
+Therefore, $\hat{\beta}$ is not consistent for $\beta $ in general. If we
+assume that
+
+\begin{eqnarray*}
+E\left[ \left. u\right\vert Z\right] &=&0, \\
+E\left[ \left. u^{2}\right\vert Z\right] &=&0, \\
+E\left[ \left. e\right\vert Z\right] &=&0.
+\end{eqnarray*}
+
+Then
+
+\begin{eqnarray*}
+E\left[ uZ^{3}\right] &=&E\left[ E\left[ \left. uZ^{3}\right\vert Z\right] %
+\right] \\
+&=&E\left[ Z^{3}E\left[ \left. u\right\vert Z\right] \right] \\
+&=&0, \\
+E\left[ u^{2}Z^{2}\right] &=&E\left[ E\left[ \left. u^{2}Z^{2}\right\vert Z%
+\right] \right] \\
+&=&E\left[ Z^{2}E\left[ \left. u^{2}\right\vert Z\right] \right] \\
+&=&0, \\
+E\left[ eZ^{2}\right] &=&E\left[ E\left[ \left. eZ^{2}\right\vert Z\right] %
+\right] \\
+&=&E\left[ Z^{2}E\left[ \left. e\right\vert Z\right] \right] \\
+&=&0.
+\end{eqnarray*}
+
+Otherwise, we can also just assume that $E\left[ uZ^{3}\right] ,E\left[
+u^{2}Z^{2}\right] $ and $E\left[ eZ^{2}\right] $ are $0$.
+
+\section*{Q3}
+
+\begin{equation*}
+\begin{tabular}{cc}
+\hline\hline
+& Combinations \\ \cline{2-2}
+Always-taker & $\left( 1,0\right) ,\left( 1,1\right) $ \\ 
+Compliers & $\left( 1,1\right) ,\left( 0,0\right) $ \\ 
+Never-taker & $\left( 0,1\right) ,\left( 0,0\right) $ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+\begin{equation*}
+\begin{tabular}{cc}
+\hline\hline
+& Types of individuals (defiers excluded) \\ \cline{2-2}
+$\left( 1,1\right) $ & \textbf{Always-taker} or \textbf{Compliers} \\ 
+$\left( 0,1\right) $ & \textbf{Never-taker} \\ 
+$\left( 1,0\right) $ & \textbf{Always-taker} \\ 
+$\left( 0,0\right) $ & \textbf{Never-taker} or \textbf{Compliers} \\ 
+\hline\hline
+\end{tabular}%
+\end{equation*}
+
+\section*{Q4 Exercise 13.10}
+
+First, we need to find the moment condition for this problem. It is
+
+\begin{equation*}
+E\left[ Z\left( Y-m\left( X,\beta \right) \right) \right] =0.
+\end{equation*}
+
+The criterion function is
+
+\begin{equation*}
+J_{n}\left( \beta \right) =n\cdot \left( \frac{1}{n}\sum_{i=1}^{n}Z_{i}%
+\left( Y_{i}-m\left( X_{i},\beta \right) \right) \right) ^{\prime }\mathbf{W}%
+\left( \frac{1}{n}\sum_{i=1}^{n}Z_{i}\left( Y_{i}-m\left( X_{i},\beta
+\right) \right) \right) ,
+\end{equation*}
+
+where $\mathbf{W}$ is an $\ell \times \ell $ positive-definite matrix. The
+GMM estimator $\hat{\beta}$ is the one minimizes $J_{n}$ given $\mathbf{W}$.
+
+\begin{equation*}
+\hat{\beta}=\arg \min_{\beta }J_{n}\left( \beta \right)
+\end{equation*}
+
+We start with $\mathbf{W}_{1}\mathbf{=I}_{\ell \times \ell }\,$, an identity
+matrix. Then we get the consistent preliminary estimator $\hat{\beta}%
+_{1}=\arg \min_{\beta }J_{n}\left( \beta \right) $ with $\mathbf{W=I}_{\ell
+\times \ell }$. Then, for $s\geq 2$, let 
+\begin{equation*}
+\mathbf{W}_{s}=\left( \frac{1}{n}\sum_{i=1}^{n}Z_{i}Z_{i}^{\prime }\left(
+Y_{i}-m\left( X_{i},\hat{\beta}_{s-1}\right) \right) ^{2}\right) ^{-1}.
+\end{equation*}
+
+Then we get the iterated estimator $\hat{\beta}_{s}=\arg \min_{\beta
+}J_{n}\left( \beta \right) $ with $\mathbf{W=W}_{s}$. For 2-step efficient
+GMM estimator, we stop at the second step. For the iterated GMM estimator,
+we stop the iteration when $\left\Vert \hat{\beta}_{s}-\hat{\beta}%
+_{s-1}\right\Vert =0$ or $\left\Vert \hat{\beta}_{s}-\hat{\beta}%
+_{s-1}\right\Vert $ is less than some tolerance level.
+
+\section*{Q5 Exercise 13.24}
+
+\subsection*{(a)}
+
+The moment condition is $E\left[ X\left( Y-\theta \right) \right] =0$. The
+criterion function is
+
+\begin{equation*}
+J_{n}\left( \theta \right) =n\cdot \left( \frac{1}{n}\sum_{i=1}^{n}X_{i}%
+\left( Y_{i}-\theta \right) \right) ^{\prime }\mathbf{W}\left( \frac{1}{n}%
+\sum_{i=1}^{n}X_{i}\left( Y_{i}-\theta \right) \right) .
+\end{equation*}
+
+To find the $\hat{\theta}$ that minimizes $J_{n}\left( \theta \right) $, we
+first look at the first-order condition:
+
+\begin{equation*}
+\frac{\partial }{\partial \theta }J_{n}\left( \hat{\theta}\right) =n\cdot
+\left( \frac{1}{n}\sum_{i=1}^{n}-X_{i}\right) ^{\prime }\mathbf{W}\left( 
+\frac{1}{n}\sum_{i=1}^{n}X_{i}\left( Y_{i}-\hat{\theta}\right) \right) =0.
+\end{equation*}
+
+Then, we have
+
+\begin{eqnarray*}
+n\cdot \left( -\frac{1}{n}\sum_{i=1}^{n}X_{i}\right) ^{\prime }\mathbf{W}%
+\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}Y_{i}-\hat{\theta}\frac{1}{n}%
+\sum_{i=1}^{n}X_{i}\right) &=&0 \\
+\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}\right) ^{\prime }\mathbf{W}\left( 
+\frac{1}{n}\sum_{i=1}^{n}X_{i}Y_{i}\right) &=&\hat{\theta}\left( \frac{1}{n}%
+\sum_{i=1}^{n}X_{i}\right) ^{\prime }\mathbf{W}\left( \frac{1}{n}%
+\sum_{i=1}^{n}X_{i}\right) .
+\end{eqnarray*}
+
+Finally, we have
+
+\begin{equation*}
+\hat{\theta}=\left( \left( \frac{1}{n}\sum_{i=1}^{n}X_{i}^{\prime }\right) 
+\mathbf{W}\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}\right) \right) ^{-1}\left( 
+\frac{1}{n}\sum_{i=1}^{n}X_{i}^{\prime }\right) \mathbf{W}\left( \frac{1}{n}%
+\sum_{i=1}^{n}X_{i}Y_{i}\right) .
+\end{equation*}
+
+Then, like exercise 13.10, starting with $\mathbf{W=}$ $\mathbf{I}_{k\times
+k}$, we get
+
+\begin{equation*}
+\hat{\theta}_{1}=\frac{\left( \sum_{i=1}^{n}X_{i}^{\prime }\right) \left(
+\sum_{i=1}^{n}X_{i}Y_{i}\right) }{\left( \sum_{i=1}^{n}X_{i}^{\prime
+}\right) \left( \sum_{i=1}^{n}X_{i}\right) }.
+\end{equation*}
+
+For $s\geq 2$, let
+
+\begin{equation*}
+\mathbf{W}_{s}\mathbf{=}\left( \frac{1}{n}X_{i}X_{i}^{\prime }\left( Y_{i}-%
+\hat{\theta}_{s-1}\right) ^{2}\right) ^{-1},
+\end{equation*}
+
+and let
+
+\begin{equation*}
+\hat{\theta}_{s}=\left( \left( \frac{1}{n}\sum_{i=1}^{n}X_{i}^{\prime
+}\right) \mathbf{W}_{s}\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}\right) \right)
+^{-1}\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}^{\prime }\right) \mathbf{W}%
+_{s}\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}Y_{i}\right) .
+\end{equation*}
+
+If we want the two step efficient estimator, we stop at the second step. If
+we want iterated estimator, we finally stop at $\hat{\theta}_{s}$ such that $%
+\left\Vert \hat{\theta}_{s}-\hat{\theta}_{s-1}\right\Vert =0$ or less than
+some tolerance level.
+
+\subsection*{(b)}
+
+If $k=1$, this model is just-identified. If $k>1$, this model is
+over-identified.
+
+\subsection*{(c)}
+
+Under $H_{0}:E\left[ Xe\right] =0$ , the test statistic is:
+
+\begin{equation*}
+J_{n}\left( \hat{\theta}\right) =n\cdot \left( \frac{1}{n}%
+\sum_{i=1}^{n}X_{i}\left( Y_{i}-\hat{\theta}\right) \right) ^{\prime }%
+\mathbf{\hat{W}}\left( \frac{1}{n}\sum_{i=1}^{n}X_{i}\left( Y_{i}-\hat{\theta%
+}\right) \right) ,
+\end{equation*}
+
+where $\hat{\theta}$ is the efficient GMM estimator we get from part (a),
+and $\mathbf{\hat{W}=}\left( \frac{1}{n}X_{i}X_{i}^{\prime }\left( Y_{i}-%
+\hat{\theta}\right) ^{2}\right) ^{-1}$.
+
+\section*{Q6 Exercise 12.25}
+
+\subsection*{(a)}
+
+The result of the replication of the reduced form regression in the final
+column of Table 12.2 are as follow.
+
+\begin{equation*}
+\begin{tabular}{ccc}
+\hline\hline
+& Estimation & Standard error (HC1) \\ \cline{2-3}
+experience & $-0.4133$ & $0.03203$ \\ 
+experience$^{2}/100$ & $0.0927$ & $0.17077$ \\ 
+black & $-1.0063$ & $0.08798$ \\ 
+south & $-0.2671$ & $0.078665$ \\ 
+urban & $0.39975$ & $0.08475$ \\ 
+public & $0.43035$ & $0.086167$ \\ 
+private & $0.1226$ & $0.10131$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+The replication of the 2SLS regression is:
+
+\begin{equation*}
+\begin{tabular}{ccc}
+\hline\hline
+& Estimation & Standard error (HC1) \\ \cline{2-3}
+education & $0.16109$ & $0.04052$ \\ 
+experience & $0.11931$ & $0.01819$ \\ 
+experience$^{2}/100$ & $-0.2305$ & $0.03680$ \\ 
+black & $-0.1017$ & $0.04403$ \\ 
+south & $-0.0950$ & $0.02177$ \\ 
+urban & $0.1164$ & $0.02630$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+\subsection*{(b)}
+
+In this part, we try a different reduced form model with the variable 
+\textbf{near a 2-year college} added.
+
+\begin{equation*}
+\begin{tabular}{ccc}
+\hline\hline
+& Estimation & Standard error (HC1) \\ \cline{2-3}
+experience & $-0.41279477$ & $0.03200792$ \\ 
+experience$^{2}/100$ & $0.08945688$ & $0.17067503$ \\ 
+black & $-1.01060399$ & $0.08795667$ \\ 
+south & $-0.26033369$ & $0.07891951$ \\ 
+urban & $0.39039534$ & $0.08555575$ \\ 
+public & $0.42162279$ & $0.08650685$ \\ 
+private & $0.13011730$ & $0.10171720$ \\ 
+college-2 & $0.06773502$ & $0.07436626$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+The t-statistic of the coefficient of the new variable \textbf{near a 2-year
+college }is $\frac{0.06773502}{0.07436626}=0.911$, and the p-value is $0.26$%
+. We cannot reject the hypothesis that the coefficient of this variable is $0
+$. In addition, the value of the coefficient is relatively small and the
+values of other coefficients do not change significantly. Even though it is
+valid, it does not play a significant role in impacting the education.
+
+\subsection*{(c)}
+
+\begin{equation*}
+\begin{tabular}{ccc}
+\hline\hline
+& Estimation & Standard error (HC1) \\ \cline{2-3}
+experience & $-0.6717638$ & $0.03164301$ \\ 
+experience$^{2}/100$ & $0.5537512$ & $0.16889943$ \\ 
+black & $-0.6877297$ & $0.07516382$ \\ 
+south & $-0.2014957$ & $0.06738587$ \\ 
+urban & $0.2652910$ & $0.07499348$ \\ 
+public & $-28.9256454$ & $2.83009269$ \\ 
+private & $0.1363548$ & $0.10542939$ \\ 
+public*age & $1.4830942$ & $0.20047303$ \\ 
+public*age$^{2}/100$ & $-1.5536585$ & $0.35108191$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+These two coefficients indicate that the relation between the age of an
+individual who grew up near a public college is not linear. When age is less
+than $\frac{1.4830942}{2\cdot 1.5536585}\times 100\approx 47.72$ years, on
+average, individuals who grew up near a public college with an older age
+have more education time.
+
+\subsection*{(d)}
+
+\begin{equation*}
+\begin{tabular}{ccc}
+\hline\hline
+& Estimation & Standard error (HC1) \\ \cline{2-3}
+education & $0.08253858$ & $0.00622812$ \\ 
+experience & $0.08709405$ & $0.00706157$ \\ 
+experience$^{2}/100$ & $-0.22472050$ & $0.03202664$ \\ 
+black & $-0.18102150$ & $0.01805731$ \\ 
+south & $-0.12194012$ & $0.01543661$ \\ 
+urban & $0.15701776$ & $0.01530355$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+We can see that the coefficient of \textbf{education} decreases with the
+expanded instrument set. The structural estimate of the return to schooling
+decreases.
+
+\section*{Q7 Exercise 13.28}
+
+\subsection*{(a)}
+
+\begin{equation*}
+\begin{tabular}{cccc}
+\hline\hline
+& Preliminary GMM & 2-step efficient GMM & Iterated GMM \\ \cline{2-4}
+education & $0.1610917$ & $0.16151623$ & $0.16152244$ \\ 
+experience & $0.1193108$ & $0.11955527$ & $0.11955859$ \\ 
+experience$^{2}/100$ & $-0.2305416$ & $-0.23151083$ & $-0.23151660$ \\ 
+black & $-0.1017273$ & $-0.10119968$ & $-0.10119373$ \\ 
+south & $-0.0950355$ & $-0.09535566$ & $-0.09535359$ \\ 
+urban & $0.1164481$ & $0.11502105$ & $0.11501566$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+As we can see from the table, the preliminary GMM is the estimation from
+2SLS, and these three results are very close.
+
+\subsection*{(b)}
+
+\begin{equation*}
+\begin{tabular}{cccc}
+\hline\hline
+& Preliminary GMM & 2-step efficient GMM & Iterated GMM \\ \cline{2-4}
+education & $0.08253858$ & $0.08385250$ & $0.08387334$ \\ 
+experience & $0.08709405$ & $0.08763553$ & $0.08763928$ \\ 
+experience$^{2}/100$ & $-0.22472050$ & $-0.22493052$ & $-0.22489366$ \\ 
+black & $-0.18102150$ & $-0.17749140$ & $-0.17744527$ \\ 
+south & $-0.12194012$ & $-0.12449040$ & $-0.12450300$ \\ 
+urban & $0.15701776$ & $0.15293796$ & $0.15289824$ \\ \hline\hline
+\end{tabular}%
+\end{equation*}
+
+As we can see from the table, the preliminary GMM is the estimation from
+2SLS, and these three results are very close.
+
+\subsection*{(c)}
+
+The J statistic for overidentification for part a is $J_{a}=0.868$, and the
+J statistic for overidentification for part b is $J_{b}=10.4$.
+
+\end{document}

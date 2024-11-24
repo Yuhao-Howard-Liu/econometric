@@ -1,0 +1,382 @@
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage[nomarkers,notablist,nofiglist]{endfloat}
+\usepackage{multirow, array}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Thursday, June 03, 2021 22:10:23}
+%TCIDATA{LastRevised=Sunday, June 20, 2021 12:46:43}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+
+\doublespacing
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+diagonal fill/.style 2 args={fill={rgb,255:red,118; green,219; blue,128}, path picture={
+\fill[#1, sharp corners] (path picture bounding box.south east) -|
+(path picture bounding box.center) -- cycle;}},
+reversed diagonal fill/.style 2 args={fill=yellow, path picture={
+\fill[#1, sharp corners] (path picture bounding box.center) |- 
+(path picture bounding box.south east) -- cycle;}}
+}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{ \textsc{COMM8102 Econometric Analysis} \\
+\textsc{Assignment 1}}
+\author{\textsc{Yuhao Liu} \\
+%EndAName
+{\small z5097536}}
+\date{{\small \today}}
+\maketitle
+
+\section*{Excercise 2.4}
+
+$\bigskip $%
+\begin{eqnarray*}
+\mathbb{E}\left[ \left. Y\right\vert X=0\right] &=&1\cdot \mathbb{P}\left(
+\left. Y=1\right\vert X=0\right) +0\cdot \mathbb{P}\left( \left.
+Y=0\right\vert X=0\right) \\
+&=&1\cdot \frac{\mathbb{P}\left( Y=1,X=0\right) }{\mathbb{P}\left(
+X=0\right) }+0\cdot \frac{\mathbb{P}\left( Y=0,X=0\right) }{\mathbb{P}\left(
+X=0\right) } \\
+&=&1\cdot \frac{0.4}{0.4+0.1}+0\cdot \frac{0.1}{0.4+0.1} \\
+&=&0.8
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\mathbb{E}\left[ \left. Y\right\vert X=1\right] &=&1\cdot \mathbb{P}\left(
+\left. Y=1\right\vert X=1\right) +0\cdot \mathbb{P}\left( \left.
+Y=0\right\vert X=1\right) \\
+&=&1\cdot \frac{\mathbb{P}\left( Y=1,X=1\right) }{\mathbb{P}\left(
+X=1\right) }+0\cdot \frac{\mathbb{P}\left( Y=0,X=1\right) }{\mathbb{P}\left(
+X=1\right) } \\
+&=&1\cdot \frac{0.3}{0.3+0.2}+0\cdot \frac{0.2}{0.3+0.21} \\
+&=&0.6
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\mathbb{E}\left[ \left. Y^{2}\right\vert X=0\right] &=&1^{2}\cdot \mathbb{P}%
+\left( \left. Y=1\right\vert X=0\right) +0^{2}\cdot \mathbb{P}\left( \left.
+Y=0\right\vert X=0\right) \\
+&=&1\cdot \frac{\mathbb{P}\left( Y=1,X=0\right) }{\mathbb{P}\left(
+X=0\right) }+0\cdot \frac{\mathbb{P}\left( Y=0,X=0\right) }{\mathbb{P}\left(
+X=0\right) } \\
+&=&1\cdot \frac{0.4}{0.4+0.1}+0\cdot \frac{0.1}{0.4+0.1} \\
+&=&0.8
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\mathbb{E}\left[ \left. Y^{2}\right\vert X=1\right] &=&1^{2}\cdot \mathbb{P}%
+\left( \left. Y=1\right\vert X=1\right) +0^{2}\cdot \mathbb{P}\left( \left.
+Y=0\right\vert X=1\right) , \\
+&=&1\cdot \frac{\mathbb{P}\left( Y=1,X=1\right) }{\mathbb{P}\left(
+X=1\right) }+0\cdot \frac{\mathbb{P}\left( Y=0,X=1\right) }{\mathbb{P}\left(
+X=1\right) }, \\
+&=&1\cdot \frac{0.3}{0.3+0.2}+0\cdot \frac{0.2}{0.3+0.21} \\
+&=&0.6
+\end{eqnarray*}
+
+\begin{eqnarray*}
+Var\left[ \left. Y\right\vert X=0\right] &=&\mathbb{E}\left[ \left.
+Y^{2}\right\vert X=0\right] -\left( \mathbb{E}\left[ \left. Y\right\vert X=0%
+\right] \right) ^{2}, \\
+&=&0.8-0.8^{2} \\
+&=&0.16
+\end{eqnarray*}
+
+\begin{eqnarray*}
+Var\left[ \left. Y\right\vert X=1\right] &=&\mathbb{E}\left[ \left.
+Y^{2}\right\vert X=1\right] -\left( \mathbb{E}\left[ \left. Y\right\vert X=1%
+\right] \right) ^{2}, \\
+&=&0.6-0.6^{2} \\
+&=&0.24
+\end{eqnarray*}
+
+\section*{Excercise 2.7}
+
+\begin{eqnarray*}
+\sigma \left( X\right) &=&Var\left[ \left. Y\right\vert X\right] \\
+&=&\mathbb{E}\left[ \left. \left( Y-\mathbb{E}\left[ \left. Y\right\vert X%
+\right] \right) ^{2}\right\vert X\right] \\
+&=&\mathbb{E}\left[ \left. Y^{2}+\left( \mathbb{E}\left[ \left. Y\right\vert
+X\right] \right) ^{2}-2\cdot Y\cdot \mathbb{E}\left[ \left. Y\right\vert X%
+\right] \right\vert X\right] \\
+&=&\mathbb{E}\left[ \left. Y^{2}\right\vert X\right] +\mathbb{E}\left[
+\left. \left( \mathbb{E}\left[ \left. Y\right\vert X\right] \right)
+^{2}\right\vert X\right] -2\cdot \mathbb{E}\left[ \left. Y\cdot \mathbb{E}%
+\left[ \left. Y\right\vert X\right] \right\vert X\right] \\
+&=&\mathbb{E}\left[ \left. Y^{2}\right\vert X\right] +\left( \mathbb{E}\left[
+\left. Y\right\vert X\right] \right) ^{2}-2\cdot \mathbb{E}\left[ \left.
+Y\right\vert X\right] \cdot \mathbb{E}\left[ \left. Y\right\vert X\right] \\
+&=&\mathbb{E}\left[ \left. Y^{2}\right\vert X\right] -\left( \mathbb{E}\left[
+\left. Y\right\vert X\right] \right) ^{2}
+\end{eqnarray*}
+
+\section{Excercise 2.18}
+
+\subsection*{(a)}
+
+\begin{eqnarray*}
+\mathbf{Q}_{XX} &=&\mathbb{E}\left[ XX^{\intercal }\right] \\
+&=&\left( 
+\begin{array}{ccc}
+\mathbb{E}\left[ 1\right] & \mathbb{E}\left[ X_{2}\right] & \mathbb{E}\left[
+X_{3}\right] \\ 
+\mathbb{E}\left[ X_{2}\right] & \mathbb{E}\left[ X_{2}^{2}\right] & \mathbb{E%
+}\left[ X_{2}X_{3}\right] \\ 
+\mathbb{E}\left[ X_{3}\right] & \mathbb{E}\left[ X_{2}X_{3}\right] & \mathbb{%
+E}\left[ X_{3}^{2}\right]%
+\end{array}%
+\right) \\
+&=&\left( 
+\begin{array}{ccc}
+1 & \mathbb{E}\left[ X_{2}\right] & \mathbb{E}\left[ \alpha _{1}+\alpha
+_{2}X_{2}\right] \\ 
+\mathbb{E}\left[ X_{2}\right] & \mathbb{E}\left[ X_{2}^{2}\right] & \mathbb{E%
+}\left[ \alpha _{1}X_{2}+\alpha _{2}X_{2}^{2}\right] \\ 
+\mathbb{E}\left[ \alpha _{1}+\alpha _{2}X_{2}\right] & \mathbb{E}\left[
+\alpha _{1}X_{2}+\alpha _{2}X_{2}^{2}\right] & \mathbb{E}\left[ \alpha
+_{1}^{2}+\alpha _{2}^{2}X_{2}^{2}+2\alpha _{1}\alpha _{2}X_{2}\right]%
+\end{array}%
+\right) \\
+&=&\left( 
+\begin{array}{ccc}
+1 & \mathbb{E}\left[ X_{2}\right] & \alpha _{1}+\alpha _{2}\mathbb{E}\left[
+X_{2}\right] \\ 
+\mathbb{E}\left[ X_{2}\right] & \mathbb{E}\left[ X_{2}^{2}\right] & \alpha
+_{1}\mathbb{E}\left[ X_{2}\right] +\alpha _{2}\mathbb{E}\left[ X_{2}^{2}%
+\right] \\ 
+\alpha _{1}+\alpha _{2}\mathbb{E}\left[ X_{2}\right] & \alpha _{1}\mathbb{E}%
+\left[ X_{2}\right] +\alpha _{2}\mathbb{E}\left[ X_{2}^{2}\right] & \alpha
+_{1}^{2}+2\alpha _{1}\alpha _{2}\mathbb{E}\left[ X_{2}\right] +\alpha
+_{2}^{2}\mathbb{E}\left[ X_{2}^{2}\right]%
+\end{array}%
+\right) .
+\end{eqnarray*}
+Define 
+\begin{eqnarray*}
+\mathbf{v}_{1} &=&\left( 1,\mathbb{E}\left[ X_{2}\right] ,\alpha _{1}+\alpha
+_{2}\mathbb{E}\left[ X_{2}\right] \right) ^{\intercal }, \\
+\mathbf{v}_{2} &=&\left( \mathbb{E}\left[ X_{2}\right] ,\mathbb{E}\left[
+X_{2}^{2}\right] ,\alpha _{1}\mathbb{E}\left[ X_{2}\right] +\alpha _{2}%
+\mathbb{E}\left[ X_{2}^{2}\right] \right) ^{\intercal }, \\
+\mathbf{v}_{3} &=&\left( \alpha _{1}+\alpha _{2}\mathbb{E}\left[ X_{2}\right]
+,\alpha _{1}\mathbb{E}\left[ X_{2}\right] +\alpha _{2}\mathbb{E}\left[
+X_{2}^{2}\right] ,\alpha _{1}^{2}+2\alpha _{1}\alpha _{2}\mathbb{E}\left[
+X_{2}\right] +\alpha _{2}^{2}\mathbb{E}\left[ X_{2}^{2}\right] \right)
+^{\intercal }.
+\end{eqnarray*}
+
+$\mathbf{v}_{1},\mathbf{v}_{2}$ and $\mathbf{v}_{3}$ are the first, second
+and third column of the matrix $\mathbf{Q}_{XX}.$ We can observe that
+
+\begin{equation*}
+\alpha _{1}\mathbf{v}_{1}+\alpha _{2}\mathbf{v}_{2}=\mathbf{v}_{3}.
+\end{equation*}
+
+By defintion, $\mathbf{v}_{1},\mathbf{v}_{2}$ and $\mathbf{v}_{3}$ are not
+linearly independent. Therefore, $\mathbf{Q}_{XX}$ is not invertible.
+
+\subsection*{(b)}
+
+Let $\mathcal{X}=\left( 1,X_{2}\right) $, and $A=\left[ 
+\begin{array}{ccc}
+1 & 0 & 0 \\ 
+0 & 1 & 0%
+\end{array}%
+\right] .$As a result, $AX=\mathcal{X}.$Since $\ X_{3}$ is a linear function
+of $X_{2}$, the best linear predictor $X^{\intercal }\mathbf{\beta }%
+_{1}\equiv \mathcal{X}^{\intercal }\mathbf{\beta }_{2}$ for different $%
+\mathbf{\beta }_{1}$ and $\mathbf{\beta }_{2}$. We also have
+
+\begin{eqnarray*}
+\mathbf{\beta }_{2} &=&\left( \mathbb{E}\left[ \mathcal{XX}^{\intercal }%
+\right] \right) ^{-1}\mathbb{E}\left[ \mathcal{X}Y\right] \\
+&=&\left[ 
+\begin{array}{cc}
+\mathbb{E}\left[ 1\right] & \mathbb{E}\left[ X_{2}\right] \\ 
+\mathbb{E}\left[ X_{2}\right] & \mathbb{E}\left[ X_{2}^{2}\right]%
+\end{array}%
+\right] ^{-1}\left[ 
+\begin{array}{c}
+\mathbb{E}\left[ Y\right] \\ 
+\mathbb{E}\left[ X_{2}Y\right]%
+\end{array}%
+\right] \\
+&=&\frac{1}{\mathbb{E}\left[ X_{2}^{2}\right] -\left( \mathbb{E}\left[ X_{2}%
+\right] \right) ^{2}}\left[ 
+\begin{array}{cc}
+\mathbb{E}\left[ X_{2}^{2}\right] & -\mathbb{E}\left[ X_{2}\right] \\ 
+-\mathbb{E}\left[ X_{2}\right] & 1%
+\end{array}%
+\right] \left[ 
+\begin{array}{c}
+\mathbb{E}\left[ Y\right] \\ 
+\mathbb{E}\left[ X_{2}Y\right]%
+\end{array}%
+\right] \\
+&=&\frac{1}{\mathbb{E}\left[ X_{2}^{2}\right] -\left( \mathbb{E}\left[ X_{2}%
+\right] \right) ^{2}}\left[ 
+\begin{array}{c}
+\mathbb{E}\left[ X_{2}^{2}\right] \mathbb{E}\left[ Y\right] -\mathbb{E}\left[
+X_{2}\right] \mathbb{E}\left[ X_{2}Y\right] \\ 
+\mathbb{E}\left[ X_{2}Y\right] -\mathbb{E}\left[ X_{2}\right] \mathbb{E}%
+\left[ Y\right]%
+\end{array}%
+\right] \\
+&=&\left[ 
+\begin{array}{c}
+\frac{\mathbb{E}\left[ X_{2}^{2}\right] \mathbb{E}\left[ Y\right] -\mathbb{E}%
+\left[ X_{2}\right] \mathbb{E}\left[ X_{2}Y\right] }{\mathbb{E}\left[
+X_{2}^{2}\right] -\left( \mathbb{E}\left[ X_{2}\right] \right) ^{2}} \\ 
+\frac{\mathbb{E}\left[ X_{2}Y\right] -\mathbb{E}\left[ X_{2}\right] \mathbb{E%
+}\left[ Y\right] }{\mathbb{E}\left[ X_{2}^{2}\right] -\left( \mathbb{E}\left[
+X_{2}\right] \right) ^{2}}%
+\end{array}%
+\right]
+\end{eqnarray*}
+
+The best linear predictor of $Y$ given $X$ is
+
+\begin{eqnarray*}
+X^{\intercal }\mathbf{\beta }_{1} &=&\mathcal{X}^{\intercal }\mathbf{\beta }%
+_{2} \\
+&=&\left( AX\right) ^{\intercal }\mathbf{\beta }_{2} \\
+&=&X^{\intercal }A^{\intercal }\left[ 
+\begin{array}{c}
+\frac{\mathbb{E}\left[ X_{2}^{2}\right] \mathbb{E}\left[ Y\right] -\mathbb{E}%
+\left[ X_{2}\right] \mathbb{E}\left[ X_{2}Y\right] }{\mathbb{E}\left[
+X_{2}^{2}\right] -\left( \mathbb{E}\left[ X_{2}\right] \right) ^{2}} \\ 
+\frac{\mathbb{E}\left[ X_{2}Y\right] -\mathbb{E}\left[ X_{2}\right] \mathbb{E%
+}\left[ Y\right] }{\mathbb{E}\left[ X_{2}^{2}\right] -\left( \mathbb{E}\left[
+X_{2}\right] \right) ^{2}}%
+\end{array}%
+\right] \\
+&=&X^{\intercal }\left[ 
+\begin{array}{c}
+\frac{\mathbb{E}\left[ X_{2}^{2}\right] \mathbb{E}\left[ Y\right] -\mathbb{E}%
+\left[ X_{2}\right] \mathbb{E}\left[ X_{2}Y\right] }{\mathbb{E}\left[
+X_{2}^{2}\right] -\left( \mathbb{E}\left[ X_{2}\right] \right) ^{2}} \\ 
+\frac{\mathbb{E}\left[ X_{2}Y\right] -\mathbb{E}\left[ X_{2}\right] \mathbb{E%
+}\left[ Y\right] }{\mathbb{E}\left[ X_{2}^{2}\right] -\left( \mathbb{E}\left[
+X_{2}\right] \right) ^{2}} \\ 
+0%
+\end{array}%
+\right]
+\end{eqnarray*}
+
+\section*{Excercise 3.3}
+
+\begin{eqnarray*}
+X^{\intercal }\mathbf{\hat{e}} &\mathbf{=}&X^{\intercal }\left( Y-X\hat{\beta%
+}\right) \\
+&=&X^{\intercal }\left( Y-X\left( X^{\intercal }X\right) ^{-1}X^{\intercal
+}Y\right) \\
+&=&X^{\intercal }Y-\underset{I}{\underbrace{X^{\intercal }X\left(
+X^{\intercal }X\right) ^{-1}}}X^{\intercal }Y \\
+&=&X^{\intercal }Y-X^{\intercal }Y \\
+&=&0
+\end{eqnarray*}
+
+\section*{Excercise 3.12}
+
+Only (3.54) and (3.53) can be estimated by OLS. Since $\mathbf{D}_{1}+%
+\mathbf{D}_{2}=\mathbf{1}_{n}$, there are perfect collinearity in (3.52),
+which violates the assumption of OLS. (3.52) has regressors $\mathbf{D}_{1},%
+\mathbf{D}_{2}$ and $\mathbf{1}_{n}$. (3.53)  has regressors $\mathbf{D}_{1}$
+and $\mathbf{D}_{2}$ . (3.53) has regressors $\mathbf{D}_{1}$ and $\mathbf{1}%
+_{n}$. $\ $
+
+\begin{eqnarray*}
+a\mathbf{D}_{1}+b\mathbf{D}_{2} &=&a\mathbf{D}_{1}+b\left( \mathbf{1}_{n}-%
+\mathbf{D}_{1}\right)  \\
+&=&\left( a-b\right) \mathbf{D}_{1}+b\mathbf{1}_{n}=0\quad iffa=b=0
+\end{eqnarray*}
+
+$\mathbf{D}_{1}$ and $\mathbf{D}_{2}$ are linearly independnent.
+
+\subsection*{(a)}
+
+No. $\mathbf{D}_{1}$ alone gives the same information as $\mathbf{D}_{1}$
+and $\mathbf{D}_{2}.$
+
+For men, $\alpha _{1}=\mu +\phi .$ For women, $\alpha _{2}=\mu .$ So we have
+
+\begin{eqnarray*}
+\alpha _{1} &=&\mu +\phi \\
+\alpha _{2} &=&\mu
+\end{eqnarray*}
+
+or
+
+\begin{eqnarray*}
+\mu &=&\alpha _{2} \\
+\phi &=&\alpha _{1}-\alpha _{2}
+\end{eqnarray*}
+
+\subsection*{(b)}
+
+The number of non-zero elements in $\mathbf{D}_{1}$ is the number of men and
+The number of non-zero elements in $\mathbf{D}_{2}$ is the number of women.
+
+\begin{eqnarray*}
+\mathbf{1}^{\intercal }\mathbf{D}_{1} &=&n_{1} \\
+\mathbf{1}^{\intercal }\mathbf{D}_{2} &=&n_{2}
+\end{eqnarray*}
+
+\section*{Excercise 3.19}
+
+\begin{eqnarray*}
+\tilde{e}_{i} &=&Y_{i}-\tilde{Y}_{i} \\
+&=&\frac{1}{1-h_{ii}}\hat{e}_{i} \\
+&=&\frac{1}{1-X_{i}\left( \mathbf{X}^{\intercal }\mathbf{X}\right) ^{-1}X_{i}%
+}\hat{e}_{i} \\
+&=&\frac{1}{1-\frac{1}{n}}\left( Y_{i}-X_{i}\hat{\beta}\right) \\
+&=&\frac{n}{n-1}\left( Y_{i}-\underset{1}{\underbrace{X_{i}}}\left( \underset%
+{n}{\underbrace{\mathbf{X}^{\intercal }\mathbf{X}}}\right) ^{-1}\underset{%
+\sum Y_{i}}{\underbrace{\mathbf{X}^{\intercal }\mathbf{Y}}}\right) \\
+&=&\frac{n}{n-1}\left( Y_{i}-\bar{Y}\right)
+\end{eqnarray*}
+
+\end{document}

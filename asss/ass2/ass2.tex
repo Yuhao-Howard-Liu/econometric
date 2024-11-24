@@ -1,0 +1,224 @@
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage[nomarkers,notablist,nofiglist]{endfloat}
+\usepackage{multirow, array}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Saturday, June 26, 2021 22:06:53}
+%TCIDATA{LastRevised=Thursday, July 01, 2021 23:20:11}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+\begin{document}
+
+\title{ \textsc{COMM8102 Econometric Analysis} \\
+\textsc{Assignment 2}}
+\author{\textsc{Yuhao Liu} \\
+%EndAName
+{\small z5097536}}
+\date{{\small \today}}
+\maketitle
+
+\section*{Excercise 4.1}
+
+\subsection*{(a)}
+
+\begin{equation*}
+\hat{\mu}_{k}=\frac{1}{n}\sum_{i=1}^{n}Y_{i}^{k}
+\end{equation*}
+
+\subsection*{(b)}
+
+\begin{eqnarray*}
+E\left[ \hat{\mu}_{k}\right] &=&E\left[ \frac{1}{n}\sum_{i=1}^{n}Y_{i}^{k}%
+\right] \\
+&=&\frac{1}{n}\sum_{i=1}^{n}E\left[ Y_{i}^{k}\right] \\
+&=&\frac{1}{n}\cdot n\cdot \mu _{k} \\
+&=&\mu _{k}
+\end{eqnarray*}
+
+\subsection*{(c)}
+
+\begin{eqnarray*}
+Var\left[ \hat{\mu}_{k}\right] &=&E\left[ \hat{\mu}_{k}^{2}\right] -\left( E%
+\left[ \hat{\mu}_{k}\right] \right) ^{2} \\
+&=&E\left[ \left( \frac{1}{n}\sum_{i=1}^{n}Y_{i}^{k}\right) ^{2}\right] -\mu
+_{k}^{2} \\
+&=&\frac{1}{n^{2}}E\left[ \left( \sum_{i=1}^{n}Y_{i}^{k}\right) ^{2}\right]
+-\mu _{k}^{2} \\
+&=&\frac{1}{n^{2}}E\left[ \sum_{i=1}^{n}Y_{i}^{2k}+\sum_{i=1,j=1,i\neq
+j}^{n}Y_{i}^{k}Y_{j}^{k}\right] -\mu _{k}^{2} \\
+&=&\frac{1}{n^{2}}\left( \sum_{i=1}^{n}E\left[ Y_{i}^{2k}\right]
++\sum_{i=1,j=1,i\neq j}^{n}E\left[ Y_{i}^{k}\right] E\left[ Y_{j}^{k}\right]
+\right) -\mu _{k}^{2} \\
+&=&\frac{1}{n^{2}}\left( n\cdot \mu _{2k}+\left( n^{2}-n\right) \cdot \mu
+_{k}^{2}\right) -\mu _{k}^{2} \\
+&=&\frac{1}{n}\cdot \mu _{2k}+\mu _{k}^{2}-\frac{1}{n}\cdot \mu _{k}^{2}-\mu
+_{k}^{2} \\
+&=&\frac{1}{n}\left( \mu _{2k}-\mu _{k}^{2}\right)
+\end{eqnarray*}
+
+We need to assume $\mu _{2k}=E\left[ Y^{2k}\right] <\infty .$
+
+\subsection*{(d)}
+
+\begin{equation*}
+\hat{V}_{\hat{\mu}_{k}}=\frac{1}{n}\left( \frac{1}{n}%
+\sum_{i=1}^{n}Y_{i}^{2k}-\left( \frac{1}{n}\sum_{i=1}^{n}Y_{i}^{k}\right)
+^{2}\right)
+\end{equation*}
+
+\section*{Excercise 4.5}
+
+\subsection*{(4.15)}
+
+\begin{eqnarray*}
+E\left[ \left. \hat{\beta}\right\vert X\right] &=&E\left[ \left. \left(
+X^{\prime }X\right) ^{-1}X^{\prime }Y\right\vert X\right] \\
+&=&\left( X^{\prime }X\right) ^{-1}X^{\prime }E\left[ \left. Y\right\vert X%
+\right] \\
+&=&\left( X^{\prime }X\right) ^{-1}X^{\prime }E\left[ \left. X\beta
++e\right\vert X\right] \\
+&=&\beta +\left( X^{\prime }X\right) ^{-1}X^{\prime }E\left[ \left.
+e\right\vert X\right] \\
+&=&\beta
+\end{eqnarray*}
+
+\subsection*{(4.16)}
+
+\begin{eqnarray*}
+Var\left[ \left. \hat{\beta}\right\vert X\right] &=&Var\left[ \left. \hat{%
+\beta}-\beta \right\vert X\right] \\
+&=&Var\left[ \left. \left( X^{\prime }X\right) ^{-1}X^{\prime }Y-\beta
+\right\vert X\right] \\
+&=&Var\left[ \left. \left( X^{\prime }X\right) ^{-1}X^{\prime }\left( X\beta
++e\right) -\beta \right\vert X\right] \\
+&=&Var\left[ \left. \left( X^{\prime }X\right) ^{-1}X^{\prime }e\right\vert X%
+\right] \\
+&=&\left( X^{\prime }X\right) ^{-1}X^{\prime }Var\left[ \left. e\right\vert X%
+\right] X\left( X^{\prime }X\right) ^{-1} \\
+&=&\left( X^{\prime }X\right) ^{-1}X^{\prime }\Omega X\left( X^{\prime
+}X\right) ^{-1} \\
+&=&\left( X^{\prime }X\right) ^{-1}\left( X^{\prime }\Omega X\right) \left(
+X^{\prime }X\right) ^{-1}
+\end{eqnarray*}
+
+\section*{Excercise 4.12}
+
+\begin{eqnarray*}
+E\left[ \left( \bar{Y}-\mu \right) ^{3}\right] &=&E\left[ \left( \frac{1}{n}%
+\sum_{i=1}^{n}Y_{i}-\mu \right) ^{3}\right] \\
+&=&E\left[ \left( \frac{1}{n}\sum_{i=1}^{n}\left( Y_{i}-\mu \right) \right)
+^{3}\right] \\
+&=&\frac{1}{n^{3}}E\left[ \left( \sum_{i=1}^{n}\left( Y_{i}-\mu \right)
+\right) ^{3}\right] \\
+&=&\frac{1}{n^{3}}E\left[ 
+\begin{array}{c}
+\sum_{i=1}^{n}\left( Y_{i}-\mu \right) ^{3}+3\cdot
+\sum_{i=1}^{n}\sum_{j=1,j\neq i}^{n}\left( Y_{i}-\mu \right) ^{2}\left(
+Y_{j}-\mu \right) \\ 
++\sum_{i=1}^{n}\sum_{j=1,j\neq i}^{n}\sum_{k=1,k\neq i,j}^{n}\left(
+Y_{i}-\mu \right) \left( Y_{j}-\mu \right) \left( Y_{k}-\mu \right)%
+\end{array}%
+\right] \\
+&=&\frac{1}{n^{3}}\cdot \left( 
+\begin{array}{c}
+\sum_{i=1}^{n}E\left[ \left( Y_{i}-\mu \right) ^{3}\right] +3\cdot
+\sum_{i=1}^{n}\sum_{j=1,j\neq i}^{n}E\left[ \left( Y_{i}-\mu \right) ^{2}%
+\right] E\left[ Y_{j}-\mu \right] \\ 
++\sum_{i=1}^{n}\sum_{j=1,j\neq i}^{n}\sum_{k=1,k\neq i,j}^{n}E\left[
+Y_{i}-\mu \right] E\left[ Y_{j}-\mu \right] E\left[ Y_{k}-\mu \right]%
+\end{array}%
+\right) \\
+&=&\frac{1}{n^{3}}\cdot \sum_{i=1}^{n}E\left[ \left( Y_{i}-\mu \right) ^{3}%
+\right] \\
+&=&\frac{\mu _{3}}{n^{2}}
+\end{eqnarray*}
+
+\section*{Excercise 4.23}
+
+\begin{eqnarray*}
+E\left[ \left. \hat{\beta}\right\vert X\right] &=&E\left[ \left. \left(
+X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime }Y\right\vert X\right] \\
+&=&E\left[ \left. \left( X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime
+}\left( X\beta +e\right) \right\vert X\right] \\
+&=&E\left[ \left. \left( X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime
+}X\beta +\left( X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime
+}e\right\vert X\right] \\
+&=&\left( X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime }X\beta +\left(
+X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime }E\left[ \left.
+e\right\vert X\right] \\
+&=&\left( X^{\prime }X+I_{k}\lambda \right) ^{-1}X^{\prime }X\beta
+\end{eqnarray*}
+
+$\hat{\beta}$ is biased for $\beta $, since $\forall \lambda >0,E\left[
+\left. \hat{\beta}\right\vert X\right] \neq \beta .$
+
+\section*{Excercise 4.26}
+
+\subsection*{(a)}
+For the results of standard errors, see Table 1 below. In terms of absolute value, \textit{Tracking} changes the most, and \textit{Percentile} changes the least. In terms of proportion, \textit{Tracking} still changes the most, but \textit{Gender} changes the least.
+
+	\begin{center}
+	\begin{tabular}{ccccccc}
+		\hline\hline
+		Standard Errors& Tracking & Age & Gender & Assigned & Percentile & Intercept \\ \cline{2-7}
+		Clustering based & $0.07665$ & $0.01339$ & $0.02868$ & $0.03771$ & $0.00072$
+		& $0.13319$ \\ 
+		Conventional robust & $0.02417$ & $0.00855$ & $%
+		0.02424$ & $0.02385$ & $0.0004$ & $0.08280$ \\ \hline\hline
+	\end{tabular}
+	\end{center}
+
+
+
+\subsection*{(b)}
+In comparison to the results from (4.55), the $\hat{\beta}$ on \textit{Tracking} increases from $0.138$ to $0.174$ by inclusion of the individual controls, and the standard errors also decreases a bit in both clustering based on the school and conventional robust formula.
+
+\section*{Q6}
+\textbf{Paper}: Miyazaki, T., 2019. Clarifying the response of gold return to financial indicators: An empirical comparative analysis using ordinary least squares, robust and quantile regressions. Journal of Risk and Financial Management, 12(1), p.33.\\
+\textbf{Main research questions}: How gold return responds to the changes in various financial indicators, specifically stock return, stock return volatility,
+financial market stress, crude oil, and the value of the US dollar.
+\textbf{Main estimation results}: See appendix.\\
+\textbf{How standard error calculated}: From lecture slides, we know that for OLS, $Var\left[ \left. \hat{\beta} \right| X \right] =\sigma^2\left( X^{\intercal}X\right)^{-1} $. The unbiased estimator for $\sigma^2$ is $\frac{e^{\intercal}e}{n-k}$, with $e=Y-X\hat{\beta}$ and $k$ is the number of regressors. The estimator of standard error is the sqaure root of the diagonal elements of $$\frac{e^{\intercal}e}{n-k}\left( X^{\intercal}X\right)^{-1}$$.
+\end{document}

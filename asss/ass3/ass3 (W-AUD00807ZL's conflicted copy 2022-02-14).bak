@@ -1,0 +1,330 @@
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage[nomarkers,notablist,nofiglist]{endfloat}
+\usepackage{multirow, array}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Monday, July 12, 2021 22:56:44}
+%TCIDATA{LastRevised=Saturday, July 17, 2021 11:56:04}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{ \textsc{COMM8102 Econometric Analysis} \\
+\textsc{Assignment 3}}
+\author{\textsc{Yuhao Liu} \\
+%EndAName
+{\small z5097536}}
+\date{{\small \today}}
+\maketitle
+
+\section{Exercise 7.1}
+
+\begin{eqnarray*}
+\hat{\beta}_{1} &=&\left( \frac{1}{n}\sum_{i=1}^{n}X_{1i}X_{1i}^{\prime
+}\right) ^{-1}\left( \frac{1}{n}\sum_{i=1}^{n}X_{1i}Y_{i}\right) \\
+&=&\left( \frac{1}{n}\sum_{i=1}^{n}X_{1i}X_{1i}^{\prime }\right) ^{-1}\left( 
+\frac{1}{n}\sum_{i=1}^{n}X_{1i}\left( X_{1i}^{\prime }\beta
+_{1}+X_{2i}^{\prime }\beta _{2}+e_{i}\right) \right) \\
+&=&\left( \frac{1}{n}\sum_{i=1}^{n}X_{1i}X_{1i}^{\prime }\right) ^{-1}\left(
+\beta _{1}\frac{1}{n}\sum_{i=1}^{n}X_{1i}X_{1i}^{\prime }+\beta _{2}\frac{1}{%
+n}\sum_{i=1}^{n}X_{1i}X_{2i}^{\prime }+\frac{1}{n}\sum_{i=1}^{n}X_{1i}e_{i}%
+\right) \\
+&&\overset{p}{\rightarrow }E\left[ X_{1}X_{1}^{\prime }\right] ^{-1}\left( E%
+\left[ X_{1}X_{1}^{\prime }\right] \beta _{1}+E\left[ X_{1}X_{2}^{\prime }%
+\right] \beta _{2}+E\left[ X_{1}e\right] \right) \\
+&=&\beta _{1}+E\left[ X_{1}X_{1}^{\prime }\right] ^{-1}E\left[
+X_{1}X_{2}^{\prime }\right] \beta _{2}+E\left[ X_{1}X_{1}^{\prime }\right]
+^{-1}E\left[ X_{1}e\right] \\
+&=&\beta _{1}+E\left[ X_{1}X_{1}^{\prime }\right] ^{-1}E\left[
+X_{1}X_{2}^{\prime }\right] \beta _{2}+0 \\
+&=&\beta _{1}+E\left[ X_{1}X_{1}^{\prime }\right] ^{-1}E\left[
+X_{1}X_{2}^{\prime }\right] \beta _{2}
+\end{eqnarray*}
+
+by WLLN and CMT. $E\left[ X_{1}e\right] =0,$ since $E\left[ Xe\right] =0$.
+Since $\hat{\beta}_{1}\overset{p}{\rightarrow }\beta _{1}+E\left[
+X_{1}X_{1}^{\prime }\right] ^{-1}E\left[ X_{1}X_{2}^{\prime }\right] \beta
+_{2}$, it is not consistent for $\beta _{1}.$ When $E\left[
+X_{1}X_{2}^{\prime }\right] =\mathbf{0}$ or $\beta _{2}=\mathbf{0}$, $\hat{%
+\beta}_{1}\overset{p}{\rightarrow }\beta _{1}$.
+
+\section{Exercise 7.15}
+
+\begin{eqnarray*}
+\sqrt{n}\left( \hat{\beta}-\beta \right) &=&\sqrt{n}\left( \frac{%
+\sum_{i=1}^{n}X_{i}^{3}Y_{i}}{\sum_{i=1}^{n}X_{i}^{4}}-\beta \right) \\
+&=&\frac{\sqrt{n}\frac{1}{n}\sum_{i=1}^{n}X_{i}^{3}Y_{i}}{\frac{1}{n}%
+\sum_{i=1}^{n}X_{i}^{4}}-\sqrt{n}\beta \\
+&=&\frac{\sqrt{n}\frac{1}{n}\sum_{i=1}^{n}X_{i}^{3}\left( X_{i}\beta
++e_{i}\right) }{\frac{1}{n}\sum_{i=1}^{n}X_{i}^{4}}-\sqrt{n}\beta \\
+&=&\frac{\sqrt{n}\frac{1}{n}\sum_{i=1}^{n}X_{i}^{4}\beta }{\frac{1}{n}%
+\sum_{i=1}^{n}X_{i}^{4}}+\frac{\sqrt{n}\frac{1}{n}%
+\sum_{i=1}^{n}X_{i}^{3}e_{i}}{\frac{1}{n}\sum_{i=1}^{n}X_{i}^{4}}-\sqrt{n}%
+\beta \\
+&=&\underset{0}{\underbrace{\frac{\beta \sqrt{n}\frac{1}{n}%
+\sum_{i=1}^{n}X_{i}^{4}}{\frac{1}{n}\sum_{i=1}^{n}X_{i}^{4}}-\sqrt{n}\beta }}%
++\frac{\sqrt{n}\frac{1}{n}\sum_{i=1}^{n}X_{i}^{3}e_{i}}{\frac{1}{n}%
+\sum_{i=1}^{n}X_{i}^{4}} \\
+&=&\frac{\sqrt{n}\left( \frac{1}{n}\sum_{i=1}^{n}\left( X_{i}^{3}e_{i}-%
+\underset{0}{\underbrace{E\left[ X_{i}^{3}e\right] }}\right) \right) }{\frac{%
+1}{n}\sum_{i=1}^{n}X_{i}^{4}} \\
+&&\overset{d}{\rightarrow }\frac{\mathcal{N}\left( 0,E\left[
+X_{i}^{6}e_{i}^{2}\right] \right) }{E\left[ X_{i}^{4}\right] } \\
+&=&\mathcal{N}\left( 0,\frac{E\left[ X_{i}^{6}e_{i}^{2}\right] }{\left( E%
+\left[ X_{i}^{4}\right] \right) ^{2}}\right)
+\end{eqnarray*}
+
+\section{Exercise 9.4}
+
+\subsection{(a)}
+
+The size of a test is the type I error.
+
+\begin{eqnarray*}
+P\left( \left. \text{Reject }H_{0}\right\vert H_{0}\text{ is true}\right)
+&=&P\left( \left. \text{Reject }H_{0}\right\vert H_{0}\right) \\
+&=&P\left( \left. W<c_{1} \text{ or } W>c_{2}\right\vert H_{0}\right)
+\end{eqnarray*}
+
+Under $H_{0},$ $W\underset{d}{\rightarrow }\chi _{q}^{2},$ $P\left( \left.
+W<c_{1}\text{ or }W>c_{2}\right\vert H_{0}\right) =P\left( \left.
+W<c_{1}\right\vert H_{0}\right) +P\left( \left. W>c_{2}\right\vert
+H_{0}\right) =\frac{\alpha }{2}+1-(1-\frac{\alpha }{2})=\alpha .$
+
+\subsection{(b)}
+
+This is not a good test of $H_{0}~vs~H_{1}.$Wald test is the extension of
+t-test to multivariate case. Wald test statistics is the sqaured version of
+t statistics in the scalar case. Only the right tail captures the extreme
+deviation from $0$ (both positive and negative). We do not need to look at
+the left tail of the $\chi _{q}^{2}$ distribution.
+
+\section{Exercise 9.12}
+
+This interpretation is not correct.
+
+The power of a hypothesis test is the probability that reject $H_{0}$ when
+the $H_{1}$ is true. $p$ value is a quantity depending on the value of test
+statistics and the asymptotic null distribution $G.$ \ The power depends on
+the critical value and the distribution of test statistic under the
+alternative hypothesis.
+
+Although a larger sample will make the test have more power, it does not
+necessarily reduce the $p$ value. $p$ value depends on both of the test
+statistic and the asymptotic null distribution $G.$ The extra samples can
+make the value of test statistic increase, but it can also make the value of
+test statistic decrease. Therefore, it cannot be guranteed that a larger
+sample will make the test reject the null.
+
+\section{Exercise 9.16}
+
+\subsection{(a)}
+
+\begin{equation*}
+\hat{\theta}=\frac{1}{n}\left( \sum_{i=1}^{n}e_{1i}^{2}-e_{2i}^{2}\right)
+\end{equation*}
+
+\subsection{(b)}
+
+By central limit theorem,
+
+\begin{equation*}
+\left( 
+\begin{array}{c}
+\sqrt{n}\left( \frac{1}{n}\sum_{i=1}^{n}e_{1i}^{2}-\sigma _{1}^{2}\right) \\ 
+\sqrt{n}\left( \frac{1}{n}\sum_{i=1}^{n}e_{2i}^{2}-\sigma _{2}^{2}\right)%
+\end{array}%
+\right) \overset{d}{\longrightarrow }\mathcal{N}\left( \left( 
+\begin{array}{c}
+0 \\ 
+0%
+\end{array}%
+\right) ,V\right) ,
+\end{equation*}
+
+where
+
+\begin{equation*}
+V=\left( 
+\begin{array}{cc}
+E\left[ \left( e_{1}^{2}-\sigma _{1}^{2}\right) ^{2}\right] & E\left[ \left(
+e_{1}^{2}-\sigma _{1}^{2}\right) \left( e_{2}^{2}-\sigma _{2}^{2}\right) %
+\right] \\ 
+E\left[ \left( e_{1}^{2}-\sigma _{1}^{2}\right) \left( e_{2}^{2}-\sigma
+_{2}^{2}\right) \right] & E\left[ \left( e_{2}^{2}-\sigma _{2}^{2}\right)
+^{2}\right]%
+\end{array}%
+\right) .
+\end{equation*}
+
+Define a function $r:\mathbb{R}^{2}\rightarrow \mathbb{R},~\left( x,y\right)
+\longmapsto x-y.$ Then we have $\theta =r\left( \sigma _{1}^{2},\sigma
+_{2}^{2}\right) ,\hat{\theta}=r\left( \frac{1}{n}\sum_{i=1}^{n}e_{1i}^{2},%
+\frac{1}{n}\sum_{i=1}^{n}e_{2i}^{2}\right) .$ By delta method,
+
+\begin{eqnarray*}
+\sqrt{n}\left( \hat{\theta}-\theta \right) &=&\sqrt{n}\left( r\left( \frac{1%
+}{n}\sum_{i=1}^{n}e_{1i}^{2},\frac{1}{n}\sum_{i=1}^{n}e_{2i}^{2}\right)
+-r\left( \sigma _{1}^{2},\sigma _{2}^{2}\right) \right) \\
+&&\overset{d}{\longrightarrow }\mathcal{N}\left( 0,R^{\prime }VR\right) ,
+\end{eqnarray*}
+
+where
+
+\begin{eqnarray*}
+R &=&\left( 
+\begin{array}{c}
+\frac{\partial }{\partial \sigma _{1}^{2}}r\left( \sigma _{1}^{2},\sigma
+_{2}^{2}\right) \\ 
+\frac{\partial }{\partial \sigma _{2}^{2}}r\left( \sigma _{1}^{2},\sigma
+_{2}^{2}\right)%
+\end{array}%
+\right) \\
+&=&\left( 
+\begin{array}{c}
+1 \\ 
+-1%
+\end{array}%
+\right) .
+\end{eqnarray*}
+
+Finally, we have
+
+\begin{equation*}
+\sqrt{n}\left( \hat{\theta}-\theta \right) \overset{d}{\longrightarrow }%
+\mathcal{N}\left( 0,V_{\theta }\right) ,
+\end{equation*}
+
+with
+
+\begin{eqnarray*}
+V_{\theta } &=&E\left[ \left( e_{1}^{2}-\sigma _{1}^{2}\right) ^{2}\right]
+-2\cdot E\left[ \left( e_{1}^{2}-\sigma _{1}^{2}\right) \left(
+e_{2}^{2}-\sigma _{2}^{2}\right) \right] +E\left[ \left( e_{2}^{2}-\sigma
+_{2}^{2}\right) ^{2}\right] \\
+&=&E\left[ \left( \left( e_{1}^{2}-\sigma _{1}^{2}\right) -\left(
+e_{2}^{2}-\sigma _{2}^{2}\right) \right) ^{2}\right] \\
+&=&E\left[ \left( e_{1}^{2}-e_{2}^{2}-\left( \sigma _{1}^{2}-\sigma
+_{2}^{2}\right) \right) ^{2}\right]
+\end{eqnarray*}
+
+\subsection{(c)}
+
+Since $\hat{\theta}=\theta +\frac{\sqrt{n}\left( \hat{\theta}-\theta \right) 
+}{\sqrt{n}},$ and $\sqrt{n}\left( \hat{\theta}-\theta \right) \overset{d}{%
+\longrightarrow }\mathcal{N}\left( 0,V_{\theta }\right) $,
+
+\begin{equation*}
+\hat{\theta}\overset{d}{\rightarrow }\mathcal{N}\left( \theta ,\frac{%
+V_{\theta }}{n}\right)
+\end{equation*}
+
+An estimator of the asymptotic variance of $\hat{\theta}$ is
+
+\begin{equation*}
+\hat{V}_{\hat{\theta}}=\frac{1}{n}\left( \frac{1}{n}\sum_{i=1}^{n}\left(
+e_{1i}^{2}-e_{2i}^{2}-\left( \sigma _{1}^{2}-\sigma _{2}^{2}\right) \right)
+^{2}\right) .
+\end{equation*}
+
+\subsection{(d)}
+
+$H_{0}$ is equivalent to $\theta =0$, and $H_{1}$ is equivalent to $\theta
+\neq 0.$ Under $H_{0}$ the test statistic is
+
+\begin{eqnarray*}
+T &=&\frac{\hat{\theta}-0}{\sqrt{\frac{V_{\theta }}{n}}} \\
+&\sim &\mathcal{N}\left( 0,1\right) .
+\end{eqnarray*}
+
+A test of asymptotic size $\alpha $ can be, we reject the null hypothesis if 
+$T<a_{1}$ or $T>a_{2}$, where $a_{1}$ is the $\frac{\alpha }{2}$ quantile of 
+$\mathcal{N}\left( 0,1\right) $ and $a_{2}$ is the $1-\frac{\alpha }{2}$\ of 
+$\mathcal{N}\left( 0,1\right) .$
+
+\subsection{(e)}
+
+Acceptance of the null hypothesis means these two models have same variance
+for the residuals, therefore they fit the data equally well.
+
+\section{Exercise 9.26}
+
+\subsection{(a)}
+
+\begin{center}
+\begin{tabular}{ccc}
+\hline\hline
+& Estimations & Standard errors $HC1$ \\ \cline{2-3}
+$\hat{\beta}_{1}$ & $-3.527$ & $1.7186$ \\ 
+$\hat{\beta}_{2}$ & $0.720$ & $0.0326$ \\ 
+$\hat{\beta}_{3}$ & $0.436$ & $0.2456$ \\ 
+$\hat{\beta}_{4}$ & $-0.220$ & $0.3238$ \\ 
+$\hat{\beta}_{5}$ & $0.427$ & $0.0755$ \\ \hline\hline
+\end{tabular}
+\end{center}
+
+\subsection{(b)}
+
+\begin{eqnarray*}
+\log C &=&\beta _{1}+\beta _{2}\log Q+\beta _{3}\log PL+\beta _{4}\log
+PK+\beta _{5}\log PF+e \\
+&=&\beta _{1}+\log Q^{\beta _{2}}+\log PL^{\beta _{3}}+\log PK^{\beta
+_{4}}+\log PF^{\beta _{5}}+e
+\end{eqnarray*}
+
+Then we have 
+
+\begin{equation*}
+C=\exp \left( \beta _{1}+e\right) \cdot Q^{\beta _{2}}\cdot PL^{\beta
+_{3}}\cdot PK^{\beta _{4}}\cdot PF^{\beta _{5}}
+\end{equation*}
+
+For $\beta _{3}+\beta _{4}+\beta _{5}=1$, this means the cost function has a
+constant return to scale for labor, capital and fuel.
+
+\subsection{(e)}
+
+\end{document}
